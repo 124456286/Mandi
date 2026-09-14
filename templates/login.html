@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f766e"><title>Login | Mandi Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+.auth-shell{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#eef8f3,#f7faf9)}
+.auth-box{width:min(440px,100%);background:#fff;border:1px solid #dcece5;border-radius:28px;box-shadow:0 24px 70px rgba(20,72,52,.14);padding:34px}
+.auth-brand{text-align:center;margin-bottom:26px}.auth-brand .auth-logo{font-size:52px}.auth-brand h1{margin:8px 0 4px;color:#123f31}.auth-brand p{margin:0;color:#6c7c75}.auth-form{display:grid;gap:16px}.auth-form label{display:block;font-weight:800;color:#24463b;margin-bottom:7px}.auth-form input,.auth-form select{width:100%;box-sizing:border-box;padding:13px 14px;border:1px solid #d6e4de;border-radius:13px;font-size:15px;background:#fbfdfc}.auth-form input:focus{outline:2px solid rgba(15,118,110,.18);border-color:#0f766e}.auth-button{width:100%;border:0;border-radius:13px;padding:14px;background:#0f766e;color:#fff;font-weight:900;font-size:15px;cursor:pointer}.remember{display:flex;gap:9px;align-items:center;color:#60736b;font-size:13px}.remember input{width:auto}.auth-note{background:#eef8f3;border:1px solid #cfe8dc;border-radius:14px;padding:13px 14px;color:#315f50;font-size:13px;margin-bottom:18px}.flash-wrap{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(520px,calc(100% - 32px));z-index:5}.auth-footer{text-align:center;margin-top:22px;font-size:12px;color:#84938d}
+</style></head><body>
+<div class="flash-wrap">{% with messages=get_flashed_messages(with_categories=true) %}{% for category,message in messages %}<div class="flash flash-{{ category if category in ['error','warning','success'] else 'success' }}">{{ message }}</div>{% endfor %}{% endwith %}</div>
+<div class="auth-shell"><div class="auth-box">
+<div class="auth-brand"><div class="auth-logo">🌾</div><h1>Mandi Tracker</h1><p>Secure business login</p></div>
+{% if not has_users %}<div class="auth-note">No user account exists yet. Create the first administrator account to secure your tracker.</div><a class="button button-primary" style="display:block;text-align:center;text-decoration:none" href="{{url_for('setup_user')}}">Create Admin Account</a>
+{% else %}<form class="auth-form" method="post"><div><label>Username</label><input name="username" autocomplete="username" required autofocus></div><div><label>Password</label><input type="password" name="password" autocomplete="current-password" required></div><label class="remember"><input type="checkbox" name="remember"> Keep me signed in for 30 days</label><button class="auth-button" type="submit">Login securely</button></form>{% endif %}
+<div style="text-align:center;margin-top:20px;font-size:14px;color:#687a72">New customer? <a href="{{ url_for('signup') }}" style="color:#0f766e;font-weight:900;text-decoration:none">Create an account</a></div><div class="auth-footer">Passwords are protected using secure one-way hashing.</div>
+</div></div></body></html>

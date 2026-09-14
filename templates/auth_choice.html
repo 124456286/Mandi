@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f766e"><title>Welcome | Mandi Tracker</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<style>
+.auth-shell{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(135deg,#eef8f3,#f7faf9)}
+.auth-box{width:min(780px,100%);background:#fff;border:1px solid #dcece5;border-radius:30px;box-shadow:0 24px 70px rgba(20,72,52,.14);padding:38px}
+.auth-brand{text-align:center;margin-bottom:30px}.auth-brand .auth-logo{font-size:56px}.auth-brand h1{margin:8px 0 5px;color:#123f31;font-size:32px}.auth-brand p{margin:0;color:#6c7c75}
+.auth-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.auth-choice{display:block;text-decoration:none;border:1px solid #d9e8e1;border-radius:22px;padding:28px 24px;background:#fbfdfc;transition:.18s}.auth-choice:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(20,72,52,.10);border-color:#9bcbb8}.auth-choice-icon{font-size:40px}.auth-choice h2{margin:12px 0 7px;color:#183f33}.auth-choice p{margin:0 0 18px;color:#687a72;line-height:1.5}.auth-choice span{display:inline-block;padding:10px 15px;border-radius:11px;background:#0f766e;color:#fff;font-weight:900}.auth-choice.new span{background:#245c4d}.auth-note{text-align:center;margin-top:20px;background:#eef8f3;border:1px solid #cfe8dc;border-radius:14px;padding:13px;color:#315f50;font-size:13px}.auth-footer{text-align:center;margin-top:20px;font-size:12px;color:#84938d}
+@media(max-width:650px){.auth-box{padding:26px}.auth-choice-grid{grid-template-columns:1fr}.auth-brand h1{font-size:27px}}
+</style></head><body>
+<div class="auth-shell"><div class="auth-box">
+<div class="auth-brand"><div class="auth-logo">🌾</div><h1>Welcome to Mandi Tracker</h1><p>Manage purchases, averages, reports and mandi accounts securely.</p></div>
+<div class="auth-choice-grid">
+<a class="auth-choice" href="{{ url_for('login') }}"><div class="auth-choice-icon">🔑</div><h2>Existing Customer</h2><p>Already have an account? Sign in with your username and password.</p><span>Sign In →</span></a>
+<a class="auth-choice new" href="{{ url_for('signup') }}"><div class="auth-choice-icon">✨</div><h2>New Customer</h2><p>New to Mandi Tracker? Create your own account and get started.</p><span>Sign Up →</span></a>
+</div>
+<div class="auth-note">Multiple users can use the same website. New self-registered accounts start with viewer access; the administrator can manage roles.</div>
+<div class="auth-footer">Passwords are protected using secure one-way hashing.</div>
+</div></div></body></html>
